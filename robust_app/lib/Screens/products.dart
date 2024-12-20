@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:robust_app/Filter/menuDrawer.dart';
 import 'package:robust_app/Screens/searchScreen.dart';
 
+import '../Blocs/CartBlocs/cartBloc.dart';
+import '../Blocs/CartBlocs/cartState.dart';
+import 'blocCartScreen.dart';
 import 'homeScreen.dart';
 import 'myCart.dart';
 
@@ -172,7 +177,7 @@ class _MyWidgetState extends State<MyWidget> {
     setState(() {
       print("Search Query: $query");
 
-      if (query.length < 2) {
+      if (query.length < 1) {
         suggestions = [];
         return;
       }
@@ -302,6 +307,7 @@ class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuDrawer(),
       body: CustomScrollView(
         slivers: [
           // Persistent AppBar with Box Shadow
@@ -311,10 +317,15 @@ class _MyWidgetState extends State<MyWidget> {
             snap: false,
             backgroundColor: Colors.white,
             elevation: 0, // Remove default shadow
-            leading: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.black),
-              onPressed: () {},
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu, color: Colors.black),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
             ),
+
             title: const Center(
               child: Text(
                 'ROBUST',
@@ -323,14 +334,67 @@ class _MyWidgetState extends State<MyWidget> {
               ),
             ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart, color: Colors.black),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyCartPage()),
+              // IconButton(
+              //   icon: const Icon(Icons.shopping_cart, color: Colors.black),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => MyCartPage()),
+              //     );
+              //   },
+              // ),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return Stack(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyCartScreen(),
+                              // builder: (context) => MyCartPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      if (state.itemCount > 0)
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              // borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              '${state.itemCount}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
                   );
                 },
+              ),
+              SizedBox(
+                width: 7,
               ),
               const CircleAvatar(
                 radius: 20,
@@ -358,7 +422,7 @@ class _MyWidgetState extends State<MyWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // const SizedBox(height: 8),
-                     //  const SizedBox(height:4),
+                      //  const SizedBox(height:4),
 
                       // Search TextField
                       TextField(
@@ -389,7 +453,16 @@ class _MyWidgetState extends State<MyWidget> {
                           child: Column(
                             children: suggestions.map((suggestion) {
                               return ListTile(
-                                title: Text(suggestion),
+                                dense:
+                                    true, // Reduces the vertical padding of the ListTile
+                                title: Text(
+                                  suggestion,
+                                  style: TextStyle(
+                                    fontSize: 14, // Reduce font size
+                                    color: Colors
+                                        .black54, // Optional: Change the text color
+                                  ),
+                                ),
                                 onTap: () {
                                   Navigator.push(
                                     context,
@@ -499,6 +572,11 @@ class _MyWidgetState extends State<MyWidget> {
                                 'Best Wear', 'assets/furniture.jpg'),
                           ],
                         ),
+                      ),
+                      _buildSectionHeader('Recent Products', () {}),
+                      Container(
+                        height: 1987,
+                        child: ProductGrid(),
                       ),
                     ],
                   ),

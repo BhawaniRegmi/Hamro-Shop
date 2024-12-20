@@ -38,6 +38,12 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   intl: ^0.18.1
   camera: ^0.10.5+5
+  video_player: ^2.7.2
+  file_picker: ^5.3.1
+  url_launcher: ^6.1.11
+  image_picker: ^1.0.4
+  equatable: ^2.0.7
+  flutter_bloc: ^8.1.6
 
 dev_dependencies:
   flutter_test:
@@ -103,6 +109,8 @@ flutter:
   - assets/s6.png
   - assets/s7.jpeg
   - assets/s8.png
+  - assets/re.png
+  - assets/c.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

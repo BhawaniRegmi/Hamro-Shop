@@ -28,7 +28,7 @@ class _AddWishListState extends State<AddWishList> {
     return Row(
       children: [
         IconButton(
-          icon: Icon(Icons.remove),
+          icon: const Icon(Icons.remove),
           onPressed: () {
             setState(() {
               if (count > 1)
@@ -56,8 +56,8 @@ class _AddWishListState extends State<AddWishList> {
   final snackBar = SnackBar(
   content: Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      const Text("Item is added to WishList"), // Text message
+    children: const [
+      Text("Item is added to WishList"), // Text message
       SizedBox(height: 35,)
       // TextButton(
       //   onPressed: () {
@@ -116,7 +116,7 @@ class _AddWishListState extends State<AddWishList> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Samsung X6',
                             style: TextStyle(
                               fontSize: 16,
@@ -124,7 +124,7 @@ class _AddWishListState extends State<AddWishList> {
                             ),
                           ),
                           Row(
-                            children: [
+                            children: const [
                               Text(
                                 'Rs 61,104',
                                 style: TextStyle(
@@ -138,7 +138,7 @@ class _AddWishListState extends State<AddWishList> {
                           ),
                           Row(
                             children: [
-                              Text(
+                              const Text(
                                 'Rs 81,104',
                                 style: TextStyle(
                                   fontSize: 12,
@@ -148,13 +148,13 @@ class _AddWishListState extends State<AddWishList> {
                               ),
                               SizedBox(width: 4),
                               Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 6, vertical: 2),
                                 decoration: BoxDecoration(
                                   color: Colors.red.shade100,
                                   borderRadius: BorderRadius.circular(4),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   '-40%',
                                   style: TextStyle(
                                     fontSize: 12,
@@ -169,16 +169,16 @@ class _AddWishListState extends State<AddWishList> {
                             children: [
                               Text(
                                 "Color: $selectedColorName",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.normal),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 width: 6,
                               ),
                               Text(
                                 "Size: $selectedSize",
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.normal),
                               ),
@@ -197,7 +197,7 @@ class _AddWishListState extends State<AddWishList> {
                 ],
               ),
               SizedBox(height: 5),
-              Text(
+              const Text(
                 'Color',
                 style: TextStyle(
                   fontSize: 14,
@@ -222,7 +222,7 @@ class _AddWishListState extends State<AddWishList> {
                             radius: 14,
                             backgroundColor: entry.key,
                             child: selectedColor == entry.key
-                                ? Icon(Icons.check,
+                                ? const Icon(Icons.check,
                                     color: Colors.white, size: 16)
                                 : null,
                           ),
@@ -233,7 +233,7 @@ class _AddWishListState extends State<AddWishList> {
                 ],
               ),
               SizedBox(height: 5),
-              Text(
+              const Text(
                 'Size',
                 style: TextStyle(
                   fontSize: 14,
@@ -260,7 +260,7 @@ class _AddWishListState extends State<AddWishList> {
                 ).toList(),
               ),
               SizedBox(height: 5),
-              Text(
+              const Text(
                 'Quantity',
                 style: TextStyle(
                   fontSize: 14,
@@ -271,7 +271,7 @@ class _AddWishListState extends State<AddWishList> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Total',
                     style: TextStyle(
                       fontSize: 16,
@@ -280,7 +280,7 @@ class _AddWishListState extends State<AddWishList> {
                   ),
                   Text(
                     'Rs ${priceMulti()}', // Correct way to call the function in string interpolation
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF1b447d),
@@ -300,9 +300,9 @@ onPressed: () {
 
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF1b447d),
-                    padding: EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Add to WishList',
                     style: TextStyle(
                       fontSize: 16,

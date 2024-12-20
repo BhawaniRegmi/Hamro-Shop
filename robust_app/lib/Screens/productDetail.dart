@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:robust_app/Screens/addtoCart.dart';
 import 'package:robust_app/Screens/addtoWishList.dart';
 import 'package:robust_app/Screens/checkOutScreen.dart';
@@ -6,6 +7,11 @@ import 'package:robust_app/Screens/myCart.dart';
 import 'package:robust_app/Screens/wishListPage.dart';
 import 'package:robust_app/Share/sharingMedia.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../Blocs/CartBlocs/cartBloc.dart';
+import '../Blocs/CartBlocs/cartState.dart';
+import 'blocCartScreen.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -16,126 +22,6 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-
-void _showShareDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        contentPadding: EdgeInsets.zero,
-        content: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.8, // Limit height
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Title Section
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Share via',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.close),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ],
-                  ),
-                ),
-                Divider(height: 1, thickness: 1, color: Colors.grey[300]),
-                // GridView Section
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: GridView.count(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    children: [
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.facebookMessenger,
-                        label: 'Messenger',
-                        onTap: () => _handleShareTap(context, 'Messenger'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.whatsapp,
-                        label: 'WhatsApp',
-                        onTap: () => _handleShareTap(context, 'WhatsApp'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.telegram,
-                        label: 'Telegram',
-                        onTap: () => _handleShareTap(context, 'Telegram'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.envelope,
-                        label: 'Gmail',
-                        onTap: () => _handleShareTap(context, 'Gmail'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.twitter,
-                        label: 'Twitter',
-                        onTap: () => _handleShareTap(context, 'Twitter'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.linkedinIn,
-                        label: 'LinkedIn',
-                        onTap: () => _handleShareTap(context, 'LinkedIn'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.clipboard,
-                        label: 'Copy Info',
-                        onTap: () => _handleShareTap(context, 'Copy Info'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.link,
-                        label: 'Copy Link',
-                        onTap: () => _handleShareTap(context, 'Copy Link'),
-                      ),
-                      _buildShareOption(
-                        context,
-                        icon: FontAwesomeIcons.sms,
-                        label: 'Send SMS',
-                        onTap: () => _handleShareTap(context, 'Send SMS'),
-                      ),
-                    ],
-                  ),
-                ),
-                // More Button Section
-                TextButton(
-                  onPressed: () {
-                    _handleShareTap(context, 'More');
-                  },
-                  child: Text('More', style: TextStyle(fontSize: 16,color: Color(0xFF1b447d),)),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
-
-
   Widget _buildShareOption(
     BuildContext context, {
     required IconData icon,
@@ -173,9 +59,6 @@ void _showShareDialog(BuildContext context) {
     );
   }
 
-
-
-  
   int count = 1; // Initial count value
   Row counter() {
     return Row(
@@ -205,7 +88,7 @@ void _showShareDialog(BuildContext context) {
     );
   }
 
-   void showAddToWishSnackbar(BuildContext context) {
+  void showAddToWishSnackbar(BuildContext context) {
     final snackBar = SnackBar(
       content: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -230,6 +113,7 @@ void _showShareDialog(BuildContext context) {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: const Color(0xFFEAF2F8), // Light background color
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -241,25 +125,94 @@ void _showShareDialog(BuildContext context) {
         title: Text(widget.product['title'],
             style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
+        // actions: [
+        //   IconButton(
+        //     // Within the `FirstRoute` widget:
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(builder: (context) => MyCartPage()),
+        //       );
+        //     },
+        //     icon: Icon(
+        //       Icons.shopping_cart_outlined,
+        //       color: Colors.black,
+        //     ),
+        //   ),
+        //   CircleAvatar(
+        //     backgroundImage: AssetImage('assets/profile.jpg'),
+        //     radius: 15,
+        //   ),
+        // ],
         actions: [
-          IconButton(
-            // Within the `FirstRoute` widget:
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyCartPage()),
-              );
-            },
-            icon: Icon(
-              Icons.shopping_cart_outlined,
-              color: Colors.black,
-            ),
-          ),
-          CircleAvatar(
-            backgroundImage: AssetImage('assets/profile.jpg'),
-            radius: 15,
-          ),
-        ],
+              // IconButton(
+              //   icon: const Icon(Icons.shopping_cart, color: Colors.black),
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => MyCartPage()),
+              //     );
+              //   },
+              // ),
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return Stack(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyCartScreen(),
+                              // builder: (context) => MyCartPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      if (state.itemCount > 0)
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              // borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              '${state.itemCount}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                width: 7,
+              ),
+              const CircleAvatar(
+                radius: 20,
+                backgroundImage: AssetImage('assets/profile.jpg'),
+              ),
+              const SizedBox(width: 16),
+            ],
       ),
       body: Stack(
         children: [
@@ -275,10 +228,11 @@ void _showShareDialog(BuildContext context) {
                     child: Center(
                       child: AspectRatio(
                         // aspectRatio: 16 / 9,
-                        aspectRatio: 16 / 11,
+                        aspectRatio: 16 / 17,
                         child: PageView(
                           children: [
-                            Image.asset('assets/headphone3.jpeg',
+                            // Image.asset('assets/headphone3.jpeg',   '${widget.product['price']}',
+                            Image.asset('${widget.product['image']}',
                                 fit: BoxFit.cover),
                             Image.asset('assets/headphone2.jpeg',
                                 fit: BoxFit.cover),
@@ -289,7 +243,7 @@ void _showShareDialog(BuildContext context) {
                       ),
                     ),
                   ),
-               //   const SizedBox(height: 16),
+                  //   const SizedBox(height: 16),
                   // Price and Rating Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -307,7 +261,7 @@ void _showShareDialog(BuildContext context) {
                           Row(
                             children: [
                               Text(
-                                'Rs 81,104',
+                                'Rs 1,30,000',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,
@@ -368,11 +322,16 @@ void _showShareDialog(BuildContext context) {
                           Text(widget.product['rating'].toString()),
                           const SizedBox(width: 4),
                           IconButton(
-  icon: Icon(Icons.share),
-  onPressed: () {
-    _showShareDialog(context);
-  },
-)
+                            icon: Icon(Icons.share),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return const ShareDialog();
+                                },
+                              );
+                            },
+                          )
                         ],
                       ),
                     ],
@@ -413,26 +372,27 @@ void _showShareDialog(BuildContext context) {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-     SizedBox(height: 50,
-       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
+                  SizedBox(
+                    height: 50,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
                         primary: Color(0xFF1b447d),
                         // padding:
                         //     EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                       ),
-                          onPressed: () {
-                            showAddToWishSnackbar(context);
-                            // Handle button press
-                          },
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('Add'),
-                              Icon(Icons.favorite),
-                            ],
-                          ),
-                        ),
-     ),
+                      onPressed: () {
+                        showAddToWishSnackbar(context);
+                        // Handle button press
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text('Add'),
+                          Icon(Icons.favorite),
+                        ],
+                      ),
+                    ),
+                  ),
 
                   SizedBox(
                     height: 50,
@@ -458,12 +418,15 @@ void _showShareDialog(BuildContext context) {
                     height: 50,
                     width: 105,
                     child: ElevatedButton(
-                    
                       // Within the `FirstRoute` widget:
                       onPressed: () {
                         showDialog(
                           context: context,
-                          builder: (context) => ProductDetailsDialog(),
+                          builder: (context) => ProductDetailsDialog(
+                            name: "${widget.product['title']}",
+                            imagePatho: "${widget.product['image']}",
+                            price: "${widget.product['price']}",
+                          ),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -809,9 +772,116 @@ class _CounterRowState extends State<CounterRow> {
   }
 }
 
+class ShareDialog extends StatelessWidget {
+  const ShareDialog({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      contentPadding: const EdgeInsets.all(20.0),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text(
+            'Share via',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Wrap(
+            spacing: 20,
+            runSpacing: 20,
+            children: [
+              _buildShareIcon(Icons.message, 'Messenger', Colors.blue,
+                  () => _launchURL('https://www.messenger.com')),
+              // _buildShareIcon(Icons.whatsapp, 'WhatsApp', Colors.green, () => _launchURL('https://api.whatsapp.com/send?text=Hello')),
+              _buildShareIcon(
+                  Icons.telegram,
+                  'Telegram',
+                  Colors.blueAccent,
+                  () => _launchURL(
+                      'https://t.me/share/url?url=https://example.com&text=Hello')),
+              _buildShareIcon(
+                  Icons.email,
+                  'Gmail',
+                  Colors.red,
+                  () =>
+                      _launchURL('mailto:?subject=Check this out&body=Hello')),
+              //  _buildShareIcon(Icons.twitter, 'Twitter', Colors.lightBlue, () => _launchURL('https://twitter.com/intent/tweet?text=Hello')),
+              //  _buildShareIcon(Icons.linkedin, 'LinkedIn', Colors.blue, () => _launchURL('https://www.linkedin.com/shareArticle?mini=true&url=https://example.com')),
+              _buildShareIcon(Icons.copy, 'Copy Info', Colors.grey,
+                  () => _copyToClipboard(context, 'Copied Info')),
+              _buildShareIcon(Icons.link, 'Copy Link', Colors.teal,
+                  () => _copyToClipboard(context, 'https://example.com')),
+              _buildShareIcon(Icons.sms, 'Send SMS', Colors.orange,
+                  () => _launchURL('sms:?body=Hello')),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
+  Widget _buildShareIcon(
+      IconData icon, String label, Color color, VoidCallback onPressed) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        GestureDetector(
+          onTap: onPressed,
+          child: CircleAvatar(
+            radius: 25,
+            backgroundColor: color.withOpacity(0.1),
+            child: Icon(
+              icon,
+              color: color,
+            ),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          label,
+          style: const TextStyle(fontSize: 12),
+        ),
+      ],
+    );
+  }
 
+  void _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  void _copyToClipboard(BuildContext context, String text) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('$text copied to clipboard')),
+    );
+  }
+}
 
 
 

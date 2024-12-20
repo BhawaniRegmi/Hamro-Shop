@@ -191,10 +191,206 @@ class InboxScreen extends StatelessWidget {
               ),
               onTap: () {
                 // Handle message tap
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ChatApp(),));
               },
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+class ChatApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Chat UI',
+      theme: ThemeData.light(),
+      home: ChatScreen(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final TextEditingController _controller = TextEditingController();
+  final List<Map<String, dynamic>> _messages = [
+    {'text': 'Hello! Is the new iPhone 15 in stock?', 'isSent': false},
+    {'text': 'Yes, it is available! Would you like to place an order?', 'isSent': true},
+    {'text': 'What colors do you have?', 'isSent': false},
+    {'text': 'We have it in Blue, Black, and Silver. Blue is the most popular one!', 'isSent': true},
+    {'text': 'Can you share a picture of the Blue one?', 'isSent': false},
+  ];
+
+  void _sendMessage() {
+    final String text = _controller.text.trim();
+    if (text.isNotEmpty) {
+      setState(() {
+        _messages.add({'text': text, 'isSent': true});
+        _controller.clear();
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: CircleAvatar(
+          radius: 12,
+          backgroundImage: AssetImage("assets/s1.jpeg") // Replace with a real image
+        ),
+        title: Text(
+          'Shop Chat',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        // subtitle: Text(
+        //   'Customer Support',
+        //   style: TextStyle(color: Colors.green, fontSize: 14),
+        // ),
+        actions: [
+          Icon(Icons.more_vert, color: Colors.black, size: 28),
+          SizedBox(width: 8),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ChatBody(messages: _messages),
+          ),
+          ChatInputField(controller: _controller, onSend: _sendMessage),
+        ],
+      ),
+    );
+  }
+}
+
+class ChatBody extends StatelessWidget {
+  final List<Map<String, dynamic>> messages;
+  ChatBody({required this.messages});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      reverse: true,
+      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: messages.map((message) {
+          return ChatBubble(
+            text: message['text'],
+            isSent: message['isSent'],
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+class ChatBubble extends StatelessWidget {
+  final String text;
+  final bool isSent;
+
+  ChatBubble({required this.text, required this.isSent});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: isSent ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 6),
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: isSent ? Colors.white : Colors.grey[300],
+          border: Border.all(color: Colors.grey.shade300),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+            bottomLeft: isSent ? Radius.circular(16) : Radius.zero,
+            bottomRight: isSent ? Radius.zero : Radius.circular(16),
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(color: Colors.black87, fontSize: 16),
+        ),
+      ),
+    );
+  }
+}
+
+class ChatInputField extends StatelessWidget {
+  final TextEditingController controller;
+  final VoidCallback onSend;
+
+  ChatInputField({required this.controller, required this.onSend});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey, blurRadius: 10, offset: Offset(0, -4))
+          ],
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 12),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.emoji_emotions, color: Colors.black54),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: TextField(
+                        controller: controller,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            hintText: 'Type your message here!',
+                            hintStyle: TextStyle(color: Colors.black54),
+                            border: InputBorder.none),
+                        onSubmitted: (value) => onSend(),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(width: 12),
+            GestureDetector(
+              onTap: onSend,
+              child: CircleAvatar(
+                backgroundColor: Colors.grey[300],
+                child: Icon(Icons.send, color: Colors.black),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

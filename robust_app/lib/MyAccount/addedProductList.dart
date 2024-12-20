@@ -70,7 +70,9 @@ class AddedProductList extends StatelessWidget {
             Center(
               child: SizedBox(width: 100,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetailsPageAdd(),));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF1b447d),
                       padding: const EdgeInsets.symmetric(vertical: 14),

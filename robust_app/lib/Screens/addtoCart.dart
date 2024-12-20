@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:robust_app/Screens/myCart.dart';
 import 'package:robust_app/Screens/productDetail.dart';
 
+import '../Blocs/CartBlocs/cartBloc.dart';
+import '../Blocs/CartBlocs/cartEvent.dart';
+
 class ProductDetailsDialog extends StatefulWidget {
+  
   int countNumber = 1;
+  String name ;
+  String imagePatho ;
+  String price;
+  ProductDetailsDialog({super.key,  required this.name,required this.imagePatho,required this.price});
   // ProductDetailsDialog(this.countNumber);
   @override
   State<ProductDetailsDialog> createState() => _ProductDetailsDialogState();
@@ -106,7 +115,7 @@ class _ProductDetailsDialogState extends State<ProductDetailsDialog> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Samsung X6',
+                            widget.name,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -115,7 +124,8 @@ class _ProductDetailsDialogState extends State<ProductDetailsDialog> {
                           Row(
                             children: [
                               Text(
-                                'Rs 61,104',
+                               // 'Rs 61,104',
+                               widget.price,
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Color(0xFF1b447d),
@@ -282,11 +292,44 @@ class _ProductDetailsDialogState extends State<ProductDetailsDialog> {
                 width: double.infinity,
                 child: ElevatedButton(
                   // Within the `FirstRoute` widget:
+                  // onPressed: () {
+                  //   Navigator.pop(context); // Close the dialog
+                  //   showAddToCartSnackbar(
+                  //       context); // Show the Snackbar after popping
+                  // },
+
                   onPressed: () {
-                    Navigator.pop(context); // Close the dialog
-                    showAddToCartSnackbar(
-                        context); // Show the Snackbar after popping
-                  },
+  final item = CartItem(
+                   //    name: "Samsung X6",
+   name: widget.name,
+    color: selectedColorName,
+    size: selectedSize,
+    quantity: count,
+    price: count * 61104,
+    // imagePath: "assets/product2.jpg",
+     imagePath: widget.imagePatho,
+  );
+
+  context.read<CartBloc>().add(AddToCartEvent(item)); // Dispatch the event
+
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Row(
+        children: [
+          Icon(Icons.shopping_cart, color: Colors.white),
+          SizedBox(width: 8),
+          Text("${widget.name} added to your cart!"),
+        ],
+      ),
+      backgroundColor: Color(0xFF1b447d),
+      behavior: SnackBarBehavior.floating,
+      duration: Duration(seconds: 4),
+    ),
+  );
+
+  Navigator.pop(context); // Close the dialog
+},
+
 
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF1b447d),
@@ -308,8 +351,6 @@ class _ProductDetailsDialogState extends State<ProductDetailsDialog> {
     );
   }
 }
-
-
 
 
 

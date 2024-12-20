@@ -426,7 +426,7 @@ class WishListPage extends StatelessWidget {
                         onPressed: () {
                             showDialog(
                           context: context,
-                          builder: (context) => ProductDetailsDialog(),
+                          builder: (context) => ProductDetailsDialog(name:"samsung" ,imagePatho:"",price: "", ),
                         );
                         },
                         style: ElevatedButton.styleFrom(

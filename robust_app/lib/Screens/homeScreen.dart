@@ -28,54 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: PreferredSize(
-      //   preferredSize: const Size.fromHeight(60), // AppBar height
-      //   child: Container(
-      //     decoration: const BoxDecoration(
-      //       color: Colors.white, // AppBar background color
-      //       border: Border(
-      //         bottom: BorderSide(
-      //           color: Colors.black, // Border color
-      //           width: 1, // Border thickness
-      //         ),
-      //       ),
-      //     ),
-      //     child: AppBar(
-      //       backgroundColor:
-      //           Colors.transparent, // Transparent to show the container color
-      //       elevation: 0,
-      //       leading: IconButton(
-      //         icon: const Icon(Icons.menu, color: Colors.black),
-      //         onPressed: () {},
-      //       ),
-      //       title: const Center(
-      //         child: Text(
-      //           'ROBUST',
-      //           style: TextStyle(
-      //               color: Color(0xFF1b447d), fontWeight: FontWeight.bold),
-      //         ),
-      //       ),
-      //       actions: [
-      //         IconButton(
-      //           icon: const Icon(Icons.shopping_cart, color: Colors.black),
-      //           onPressed: () {
-      //             Navigator.push(
-      //               context,
-      //               MaterialPageRoute(builder: (context) => MyCartPage()),
-      //             );
-      //           },
-      //         ),
-      //         const CircleAvatar(
-      //           radius: 20,
-      //           backgroundImage: AssetImage(
-      //               'assets/profile.jpg'), // Replace with the path to your local asset
-      //         ),
-      //         const SizedBox(width: 16),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-
       body: _pages[_currentIndex], // Display the selected page
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -212,43 +164,188 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class ProductGrid extends StatelessWidget {
   final List<Map<String, String>> products = [
-    {
-      'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 43,931',
-      'rating': '4.5',
-    },
-    {
-      'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
-      'price': 'Rs 81,104',
-      'rating': '4.5',
-    },
-    {
-      'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 65,521',
-      'rating': '4.5',
-    },
-    {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '4.5',
-    },
-    {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '4.5',
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '4.5',
-    },
-  ];
+  {
+    'image': 'assets/product1.png',
+    'title': 'Robot Vacuum',
+    'price': 'Rs 43,931',
+    'rating': '4.8',
+  },
+  {
+    'image': 'assets/product2.jpg',
+    'title': 'Samsung X6 Ultra',
+    'price': 'Rs 81,104',
+    'rating': '4.6',
+  },
+  {
+    'image': 'assets/product3.png',
+    'title': 'Shaork Vacuum',
+    'price': 'Rs 65,521',
+    'rating': '4.7',
+  },
+  {
+    'image': 'assets/product4.png',
+    'title': 'Toshibi Fridge',
+    'price': 'Rs 1,70,169',
+    'rating': '4.4',
+  },
+  {
+    'image': 'assets/product5.png',
+    'title': 'Air Purifier',
+    'price': 'Rs 66,235',
+    'rating': '4.3',
+  },
+  {
+    'image': 'assets/product6.png',
+    'title': 'Epson Projector',
+    'price': 'Rs 54,069',
+    'rating': '4.9',
+  },
+  {
+    'image': 'assets/product1.png',
+    'title': 'Robot Vacuum',
+    'price': 'Rs 43,931',
+    'rating': '4.2',
+  },
+  {
+    'image': 'assets/product2.jpg',
+    'title': 'Samsung X6 Ultra',
+    'price': 'Rs 81,104',
+    'rating': '4.5',
+  },
+  {
+    'image': 'assets/product3.png',
+    'title': 'Shaork Vacuum',
+    'price': 'Rs 65,521',
+    'rating': '4.6',
+  },
+  {
+    'image': 'assets/product4.png',
+    'title': 'Toshibi Fridge',
+    'price': 'Rs 1,70,169',
+    'rating': '4.7',
+  },
+  {
+    'image': 'assets/product5.png',
+    'title': 'Air Purifier',
+    'price': 'Rs 66,235',
+    'rating': '4.1',
+  },
+  {
+    'image': 'assets/product6.png',
+    'title': 'Epson Projector',
+    'price': 'Rs 54,069',
+    'rating': '5.0',
+  },
+  {
+    'image': 'assets/product1.png',
+    'title': 'Robot Vacuum',
+    'price': 'Rs 43,931',
+    'rating': '4.0',
+  },
+  {
+    'image': 'assets/product2.jpg',
+    'title': 'Samsung X6 Ultra',
+    'price': 'Rs 81,104',
+    'rating': '4.3',
+  },
+  {
+    'image': 'assets/product3.png',
+    'title': 'Shaork Vacuum',
+    'price': 'Rs 65,521',
+    'rating': '4.8',
+  },
+  {
+    'image': 'assets/product4.png',
+    'title': 'Toshibi Fridge',
+    'price': 'Rs 1,70,169',
+    'rating': '4.9',
+  },
+  {
+    'image': 'assets/product5.png',
+    'title': 'Air Purifier',
+    'price': 'Rs 66,235',
+    'rating': '4.2',
+  },
+  {
+    'image': 'assets/product6.png',
+    'title': 'Epson Projector',
+    'price': 'Rs 54,069',
+    'rating': '4.7',
+  },
+  {
+    'image': 'assets/product1.png',
+    'title': 'Robot Vacuum',
+    'price': 'Rs 43,931',
+    'rating': '4.4',
+  },
+  {
+    'image': 'assets/product2.jpg',
+    'title': 'Samsung X6 Ultra',
+    'price': 'Rs 81,104',
+    'rating': '4.8',
+  },
+  {
+    'image': 'assets/product3.png',
+    'title': 'Shaork Vacuum',
+    'price': 'Rs 65,521',
+    'rating': '4.3',
+  },
+  {
+    'image': 'assets/product4.png',
+    'title': 'Toshibi Fridge',
+    'price': 'Rs 1,70,169',
+    'rating': '4.5',
+  },
+  {
+    'image': 'assets/product5.png',
+    'title': 'Air Purifier',
+    'price': 'Rs 66,235',
+    'rating': '4.6',
+  },
+  {
+    'image': 'assets/product6.png',
+    'title': 'Epson Projector',
+    'price': 'Rs 54,069',
+    'rating': '4.2',
+  },
+  {
+    'image': 'assets/product1.png',
+    'title': 'Robot Vacuum',
+    'price': 'Rs 43,931',
+    'rating': '4.1',
+  },
+  {
+    'image': 'assets/product2.jpg',
+    'title': 'Samsung X6 Ultra',
+    'price': 'Rs 81,104',
+    'rating': '4.7',
+  },
+  {
+    'image': 'assets/product3.png',
+    'title': 'Shaork Vacuum',
+    'price': 'Rs 65,521',
+    'rating': '4.5',
+  },
+  {
+    'image': 'assets/product4.png',
+    'title': 'Toshibi Fridge',
+    'price': 'Rs 1,70,169',
+    'rating': '4.3',
+  },
+  {
+    'image': 'assets/product5.png',
+    'title': 'Air Purifier',
+    'price': 'Rs 66,235',
+    'rating': '4.4',
+  },
+  {
+    'image': 'assets/product6.png',
+    'title': 'Epson Projector',
+    'price': 'Rs 54,069',
+    'rating': '4.6',
+  },
+];
+
 
   @override
   Widget build(BuildContext context) {
@@ -272,27 +369,6 @@ class ProductGrid extends StatelessWidget {
                 final product = products[index];
                 return GestureDetector(
                   onTap: () {
-                    // Handle tap here, e.g., navigate to a detail screen
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const ProductDetailsPage(
-                    //       product: {
-                    //         'title': 'Headphone',
-                    //         'price': 7963,
-                    //         'rating': 4.5,
-                    //         'description':
-                    //             "The headphone is a sleek and lightweight audio accessory designed for premium sound quality. Featuring advanced noise-cancellation technology, it delivers an immersive listening experience, perfect for music, movies, and calls. Its ergonomic design ensures comfort during extended use, while the adjustable headband provides a secure fit. Equipped with high-performance drivers, the headphone produces rich bass and clear treble for a balanced sound profile. With a long-lasting battery, it supports wireless connectivity for hours of uninterrupted playback. The built-in microphone offers seamless call handling and voice assistant support. Stylish and durable, it's an ideal choice for both casual and professional use.",
-                    //         'images': [
-                    //           'assets/headphone.jpeg',
-                    //           'assets/headphone2.jpeg',
-                    //           'assets/headphone3.jpeg',
-                    //         ],
-                    //       },
-                    //     ),
-                    //   ),
-                    // );
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -393,70 +469,6 @@ class ProductGrid extends StatelessWidget {
 
 }
 
-// import 'package:flutter/material.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: BottomNavDemo(),
-//     );
-//   }
-// }
-
-// class BottomNavDemo extends StatefulWidget {
-//   @override
-//   _BottomNavDemoState createState() => _BottomNavDemoState();
-// }
-
-// class _BottomNavDemoState extends State<BottomNavDemo> {
-//   int _currentIndex = 0; // Tracks the selected tab index
-
-//   // List of pages corresponding to each BottomNavigationBar item
-//   final List<Widget> _pages = [
-//     HomePage(),
-//     SearchPage(),
-//     FavoritesPage(),
-//     InboxPage(),
-//     AccountPage(),
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Bottom Navigation Demo'),
-//       ),
-//       body: _pages[_currentIndex], // Display the selected page
-//       bottomNavigationBar: BottomNavigationBar(
-//         type: BottomNavigationBarType.fixed,
-//         selectedItemColor: Colors.blue,
-//         unselectedItemColor: Colors.grey,
-//         currentIndex: _currentIndex, // Reflect the selected index
-//         onTap: (index) {
-//           setState(() {
-//             _currentIndex = index; // Update the selected index
-//           });
-//         },
-//         items: const [
-//           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-//           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.favorite), label: 'Favorites'),
-//           BottomNavigationBarItem(icon: Icon(Icons.inbox), label: 'Inbox'),
-//           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 // Define separate widgets for each page
 class HomePage extends StatelessWidget {
   @override
@@ -521,75 +533,40 @@ class AccountPage extends StatelessWidget {
 
 
 
-
-
-
-
-
-// class HomeScreen extends StatefulWidget {
-//   @override
-//   _HomeScreenState createState() => _HomeScreenState();
-// }
-
-// class _HomeScreenState extends State<HomeScreen> {
-//   final List<Map<String, String>> products = [
-//     // Same product list as in SearchScreen
-//   ];
-
-//   List<String> suggestions = [];
-//   TextEditingController searchController = TextEditingController();
-
-//   void updateSuggestions(String query) {
-//     setState(() {
-//       suggestions = query.isEmpty
-//           ? []
-//           : products
-//               .map((product) => product['title']!)
-//               .where(
-//                   (title) => title.toLowerCase().contains(query.toLowerCase()))
-//               .toList();
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('Home')),
-//       body: Column(
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(10.0),
-//             child: TextField(
-//               controller: searchController,
-//               onChanged: updateSuggestions,
-//               decoration: InputDecoration(
-//                 labelText: 'Search Products',
-//                 border: OutlineInputBorder(),
-//                 prefixIcon: Icon(Icons.search),
-//               ),
-//             ),
-//           ),
-//           if (suggestions.isNotEmpty)
-//             Card(
-//               child: Column(
-//                 children: suggestions.map((suggestion) {
-//                   return ListTile(
-//                     title: Text(suggestion),
+// child: GridView.builder(
+//                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//                   crossAxisCount: 3,
+//                   childAspectRatio: 0.68,
+//                 ),
+//                 itemCount: filteredProducts.length,
+//                 itemBuilder: (context, index) {
+//                   final product = filteredProducts[index];
+//                   return GestureDetector(
 //                     onTap: () {
-//                       // Navigate to SearchScreen with the selected query
 //                       Navigator.push(
 //                         context,
 //                         MaterialPageRoute(
-//                           builder: (context) => SearchScreen(searchQuery: suggestion),
+//                           builder: (context) => ProductDetailsPage(
+//                             product: {
+//                               'image': product['image']!,
+//                               'title': product['title']!,
+//                               'price': product['price']!,
+//                               'rating': product['rating']!,
+//                               // 'description': "Description for ${product['title']}",
+//                               'description':
+//                                   "The headphone is a sleek and lightweight audio accessory designed for premium sound quality. Featuring advanced noise-cancellation technology, it delivers an immersive listening experience, perfect for music, movies, and calls. Its ergonomic design ensures comfort during extended use, while the adjustable headband provides a secure fit. Equipped with high-performance drivers, the headphone produces rich bass and clear treble for a balanced sound profile. With a long-lasting battery, it supports wireless connectivity for hours of uninterrupted playback. The built-in microphone offers seamless call handling and voice assistant support. Stylish and durable, it's an ideal choice for both casual and professional use.",
+//                               'images': [product['image']!],
+//                             },
+//                           ),
 //                         ),
 //                       );
 //                     },
+//                     child: _buildProductCard(
+//                       product['image']!,
+//                       product['title']!,
+//                       product['price']!,
+//                       product['rating']!,
+//                     ),
 //                   );
-//                 }).toList(),
+//                 },
 //               ),
-//             ),
-//         ],
-//       ),
-//     );
-//   }
-// }

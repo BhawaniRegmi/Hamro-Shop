@@ -1245,6 +1245,12 @@ class _SearchScreenState extends State<SearchScreen> {
       'rating': '1'
     },
     {
+      'image': 'assets/product4.png',
+      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'price': 'Rs 1,70,169',
+      'rating': '1'
+    },
+    {
       'image': 'assets/product5.png',
       'title': 'Air Purifier with True HEPA H14 Filter',
       'price': 'Rs 66,235',
@@ -1275,6 +1281,78 @@ class _SearchScreenState extends State<SearchScreen> {
       'rating': '2'
     },
     {
+      'image': 'assets/product4.png',
+      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'price': 'Rs 1,70,169',
+      'rating': '1'
+    },
+    {
+      'image': 'assets/product5.png',
+      'title': 'Air Purifier with True HEPA H14 Filter',
+      'price': 'Rs 66,235',
+      'rating': '5'
+    },
+    {
+      'image': 'assets/product6.png',
+      'title': 'Epson Mini Portable Projector Wireless',
+      'price': 'Rs 54,069',
+      'rating': '3'
+    },
+     {
+      'image': 'assets/product4.png',
+      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'price': 'Rs 1,70,169',
+      'rating': '1'
+    },
+    {
+      'image': 'assets/product5.png',
+      'title': 'Air Purifier with True HEPA H14 Filter',
+      'price': 'Rs 66,235',
+      'rating': '5'
+    },
+    {
+      'image': 'assets/product6.png',
+      'title': 'Epson Mini Portable Projector Wireless',
+      'price': 'Rs 54,069',
+      'rating': '3'
+    },
+    {
+      'image': 'assets/product1.png',
+      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'price': 'Rs 43,931',
+      'rating': '4'
+    },
+    {
+      'image': 'assets/product2.jpg',
+      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'price': 'Rs 81,104',
+      'rating': '3'
+    },
+    {
+      'image': 'assets/product3.png',
+      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'price': 'Rs 65,521',
+      'rating': '2'
+    },
+    {
+      'image': 'assets/product4.png',
+      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'price': 'Rs 1,70,169',
+      'rating': '1'
+    },
+    {
+      'image': 'assets/product5.png',
+      'title': 'Air Purifier with True HEPA H14 Filter',
+      'price': 'Rs 66,235',
+      'rating': '5'
+    },
+    {
+      'image': 'assets/product6.png',
+      'title': 'Epson Mini Portable Projector Wireless',
+      'price': 'Rs 54,069',
+      'rating': '3'
+    },
+     {
       'image': 'assets/product4.png',
       'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
       'price': 'Rs 1,70,169',
@@ -1353,36 +1431,6 @@ class _SearchScreenState extends State<SearchScreen> {
       'rating': '1'
     },
     {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '5'
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '3'
-    },
-    {
-      'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 43,931',
-      'rating': '4'
-    },
-    {
-      'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
-      'price': 'Rs 81,104',
-      'rating': '3'
-    },
-    {
-      'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 65,521',
-      'rating': '2'
-    },
-    {
       'image': 'assets/product4.png',
       'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
       'price': 'Rs 1,70,169',
@@ -1436,25 +1484,7 @@ class _SearchScreenState extends State<SearchScreen> {
       'price': 'Rs 54,069',
       'rating': '3'
     },
-        {
-      'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 43,931',
-      'rating': '4'
-    },
-    {
-      'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
-      'price': 'Rs 81,104',
-      'rating': '3'
-    },
-    {
-      'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 65,521',
-      'rating': '2'
-    },
-    {
+     {
       'image': 'assets/product4.png',
       'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
       'price': 'Rs 1,70,169',
@@ -1491,6 +1521,24 @@ class _SearchScreenState extends State<SearchScreen> {
       'rating': '2'
     },
     {
+      'image': 'assets/product4.png',
+      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'price': 'Rs 1,70,169',
+      'rating': '1'
+    },
+    {
+      'image': 'assets/product5.png',
+      'title': 'Air Purifier with True HEPA H14 Filter',
+      'price': 'Rs 66,235',
+      'rating': '5'
+    },
+    {
+      'image': 'assets/product6.png',
+      'title': 'Epson Mini Portable Projector Wireless',
+      'price': 'Rs 54,069',
+      'rating': '3'
+    },
+     {
       'image': 'assets/product4.png',
       'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
       'price': 'Rs 1,70,169',
@@ -1580,176 +1628,6 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   FocusNode focusNode = FocusNode();
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     drawer: FilterDrawer(
-  //       onPriceRangeChanged: (min, max) {
-  //         setState(() {
-  //           minPrice = min;
-  //           maxPrice = max;
-  //         });
-  //         filterProducts(searchController.text);
-  //       },
-  //       onRatingChanged: (rating) {
-  //         setState(() {
-  //           this.rating = rating;
-  //         });
-  //         filterProducts(searchController.text);
-  //       },
-  //     ),
-  //     body: Column(
-  //       children: [
-  //         Padding(
-  //           padding: const EdgeInsets.all(10.0),
-  //           child: Column(
-  //             children: [
-  //               PreferredSize(
-  //                 preferredSize: const Size.fromHeight(60), // AppBar height
-  //                 child: Container(
-  //                   decoration: const BoxDecoration(
-  //                     color: Colors.white, // AppBar background color
-  //                     border: Border(
-  //                       bottom: BorderSide(
-  //                         color: Colors.black, // Border color
-  //                         width: 1, // Border thickness
-  //                       ),
-  //                     ),
-  //                   ),
-  //                   child: AppBar(
-  //                     backgroundColor: Colors
-  //                         .transparent, // Transparent to show the container color
-  //                     elevation: 0,
-  //                     leading: IconButton(
-  //                       icon: const Icon(Icons.menu, color: Colors.black),
-  //                       onPressed: () {},
-  //                     ),
-  //                     title: const Center(
-  //                       child: Text(
-  //                         'ROBUST',
-  //                         style: TextStyle(
-  //                             color: Color(0xFF1b447d),
-  //                             fontWeight: FontWeight.bold),
-  //                       ),
-  //                     ),
-  //                     actions: [
-  //                       IconButton(
-  //                         icon: const Icon(Icons.shopping_cart,
-  //                             color: Colors.black),
-  //                         onPressed: () {
-  //                           Navigator.push(
-  //                             context,
-  //                             MaterialPageRoute(
-  //                                 builder: (context) => MyCartPage()),
-  //                           );
-  //                         },
-  //                       ),
-  //                       const CircleAvatar(
-  //                         radius: 20,
-  //                         backgroundImage: AssetImage(
-  //                             'assets/profile.jpg'), // Replace with the path to your local asset
-  //                       ),
-  //                       const SizedBox(width: 16),
-  //                     ],
-  //                   ),
-  //                 ),
-  //               ),
-  //               SizedBox(
-  //                 height: 8,
-  //               ),
-  //               // Search TextField
-  //               TextField(
-  //                 focusNode: focusNode,
-  //                 controller: searchController,
-  //                 onChanged: updateSuggestions,
-  //                 decoration: InputDecoration(
-  //                   labelText: 'Search Products',
-  //                   border: OutlineInputBorder(),
-  //                   prefixIcon: Icon(Icons.search),
-  //                   suffixIcon: searchController.text.isNotEmpty
-  //                       ? IconButton(
-  //                           icon: Icon(Icons.clear),
-  //                           onPressed: clearSearch,
-  //                         )
-  //                       : null,
-  //                 ),
-  //               ),
-  //               Row(
-  //                 children: [
-  //                   TextButton(onPressed: () {}, child: Text("bestmatch")),
-  //                   TextButton(onPressed: () {}, child: Text("sale")),
-  //                   Builder(
-  //                     builder: (context) {
-  //                       return IconButton(
-  //                         icon: const Icon(Icons.filter_list),
-  //                         onPressed: () {
-  //                           Scaffold.of(context)
-  //                               .openDrawer(); // Opens the drawer
-  //                           unFiltered();
-  //                         },
-  //                       );
-  //                     },
-  //                   ),
-  //                 ],
-  //               ),
-  //               // Suggestion Dropdown
-  //               if (suggestions.isNotEmpty && focusNode.hasFocus)
-  //                 Card(
-  //                   margin: EdgeInsets.zero,
-  //                   child: ListView.builder(
-  //                     shrinkWrap: true,
-  //                     itemCount: suggestions.length,
-  //                     itemBuilder: (context, index) {
-  //                       return ListTile(
-  //                         dense: true,
-  //                         title: Text(suggestions[index]),
-  //                         onTap: () {
-  //                           searchController.text = suggestions[index];
-  //                           filterProducts(suggestions[index]);
-  //                           suggestions.clear();
-  //                         },
-  //                       );
-  //                     },
-  //                   ),
-  //                 ),
-  //             ],
-  //           ),
-  //         ),
-  //         // Product Grid
-  //         Expanded(
-  //           child: GridView.builder(
-  //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-  //               crossAxisCount: 3,
-  //               childAspectRatio: 0.65,
-  //             ),
-  //             itemCount: filteredProducts.length,
-  //             itemBuilder: (context, index) {
-  //               final product = filteredProducts[index];
-  //               return GestureDetector(
-  //                 onTap: () {
-  //                   Navigator.push(
-  //                     context,
-  //                     MaterialPageRoute(
-  //                       builder: (context) =>
-  //                           ProductDetailsPage(product: product),
-  //                     ),
-  //                   );
-  //                 },
-  //                 child: _buildProductCard(
-  //                   product['image']!,
-  //                   product['title']!,
-  //                   product['price']!,
-  //                   product['rating']!,
-  //                 ),
-  //               );
-  //             },
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1772,65 +1650,61 @@ class _SearchScreenState extends State<SearchScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-                 PreferredSize(
-                    preferredSize: const Size.fromHeight(60),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        border: Border(
-                          bottom: BorderSide(
-                           // color: Colors.black,
-                           color:  Colors.grey,
-                            width: 1,
-                          ),
-                        ),
-                      ),
-                      child: AppBar(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        leading: IconButton(
-                          icon: const Icon(Icons.menu, color: Colors.black),
-                          onPressed: () {},
-                        ),
-                        title: const Center(
-                          child: Text(
-                            'Search',
-                            style: TextStyle(
-                              color: Color(0xFF1b447d),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        actions: [
-                          IconButton(
-                            icon: const Icon(Icons.shopping_cart,
-                                color: Colors.black),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyCartPage()),
-                              );
-                            },
-                          ),
-                          const CircleAvatar(
-                            radius: 20,
-                            backgroundImage: AssetImage('assets/profile.jpg'),
-                          ),
-                          const SizedBox(width: 16),
-                        ],
+            PreferredSize(
+              preferredSize: const Size.fromHeight(60),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  border: Border(
+                    bottom: BorderSide(
+                      // color: Colors.black,
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: AppBar(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  leading: IconButton(
+                    icon: const Icon(Icons.menu, color: Colors.black),
+                    onPressed: () {},
+                  ),
+                  title: const Center(
+                    child: Text(
+                      'Search',
+                      style: TextStyle(
+                        color: Color(0xFF1b447d),
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+                  actions: [
+                    IconButton(
+                      icon:
+                          const Icon(Icons.shopping_cart, color: Colors.black),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyCartPage()),
+                        );
+                      },
+                    ),
+                    const CircleAvatar(
+                      radius: 20,
+                      backgroundImage: AssetImage('assets/profile.jpg'),
+                    ),
+                    const SizedBox(width: 16),
+                  ],
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 crossAxisAlignment:
                     CrossAxisAlignment.start, // Align items to the start
                 children: [
-             
-                  // Reduced space below the AppBar
-                 // SizedBox(height: 8),
                   TextField(
                     focusNode: focusNode,
                     controller: searchController,
@@ -1845,31 +1719,16 @@ class _SearchScreenState extends State<SearchScreen> {
                               onPressed: clearSearch,
                             )
                           : null,
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical:
+                            10, // Adjust vertical padding to reduce height
+                        horizontal: 12, // Adjust horizontal padding for spacing
+                      ),
+                    ),
+                    style: TextStyle(
+                      fontSize: 14, // Adjust the font size of the text
                     ),
                   ),
-                  // Reduced space below the search field
-                  // SizedBox(height: 4),
-                  // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     ElevatedButton(onPressed: () {}, child: Text("bestmatch")),
-                  //     ElevatedButton(onPressed: () {}, child: Text("sale")),
-                  //     ElevatedButton(
-                  //       onPressed: () {
-                  //          Scaffold.of(context)
-                  //                 .openDrawer(); // Opens the drawer
-                  //             unFiltered();
-                  //         // Handle button press
-                  //       },
-                  //       child: Row(
-                  //         mainAxisSize: MainAxisSize.min,
-                  //         children: [
-                  //           Text('Filter'),
-                  //           Icon(Icons.filter_list),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                   SizedBox(
                     height: 5,
                   ),
@@ -1891,33 +1750,33 @@ class _SearchScreenState extends State<SearchScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF1b447d),                   
-                      ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF1b447d),
+                          ),
                           onPressed: () {},
                           child: Text("Best Match"),
                         ),
                         ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                        primary: Color(0xFF1b447d),
-                        // padding:
-                        //     EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                      ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFF1b447d),
+                            // padding:
+                            //     EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                          ),
                           onPressed: () {},
                           child: Text("Sale"),
                         ),
-                            Builder(
-                      builder: (context) {
-                        return IconButton(
-                          icon: const Icon(Icons.filter_list),
-                          onPressed: () {
-                            Scaffold.of(context)
-                                .openDrawer(); // Opens the drawer
-                            unFiltered();
+                        Builder(
+                          builder: (context) {
+                            return IconButton(
+                              icon: const Icon(Icons.filter_list),
+                              onPressed: () {
+                                Scaffold.of(context)
+                                    .openDrawer(); // Opens the drawer
+                                unFiltered();
+                              },
+                            );
                           },
-                        );
-                      },
-                    ),
+                        ),
                       ],
                     ),
                   ),
@@ -1959,26 +1818,32 @@ class _SearchScreenState extends State<SearchScreen> {
                         ],
                       ),
                     ),
-                   // SizedBox(height: 200,)
+                  // SizedBox(height: 200,)
                 ],
               ),
             ),
             // Ensure no extra space is rendered when suggestions are empty
-            if (suggestions.isEmpty)
-             SizedBox(height: 0),
+            if (suggestions.isEmpty) SizedBox(height: 0),
             SizedBox(
-             // height: MediaQuery.of(context).size.height * 0.6,
-              height: MediaQuery.of(context).size.height * 0.5,
+              // height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.8,
+
               child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                   childAspectRatio: 0.68,
-                     
-                ),
-                itemCount: filteredProducts.length,
-                itemBuilder: (context, index) {
-                  final product = filteredProducts[index];
-                  return GestureDetector(
+             // physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, // Number of items per row
+                //childAspectRatio: 0.77,
+                childAspectRatio: 0.68, // Adjusts the height/width ratio
+                crossAxisSpacing: 1.5,
+                // mainAxisSpacing: 8.0,  //// Adjusted spacing
+                 mainAxisSpacing: 2.0,
+              ),
+              // itemCount: products.length,
+              itemCount: filteredProducts.length,
+              itemBuilder: (context, index) {
+               final product = filteredProducts[index];
+                return GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -2005,8 +1870,47 @@ class _SearchScreenState extends State<SearchScreen> {
                       product['rating']!,
                     ),
                   );
-                },
-              ),
+              },
+            ),
+              // child: GridView.builder(
+              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount: 3,
+              //     childAspectRatio: 0.68,
+              //   ),
+              //   itemCount: filteredProducts.length,
+              //   itemBuilder: (context, index) {
+              //     final product = filteredProducts[index];
+              //     return GestureDetector(
+              //       onTap: () {
+              //         Navigator.push(
+              //           context,
+              //           MaterialPageRoute(
+              //             builder: (context) => ProductDetailsPage(
+              //               product: {
+              //                 'image': product['image']!,
+              //                 'title': product['title']!,
+              //                 'price': product['price']!,
+              //                 'rating': product['rating']!,
+              //                 // 'description': "Description for ${product['title']}",
+              //                 'description':
+              //                     "The headphone is a sleek and lightweight audio accessory designed for premium sound quality. Featuring advanced noise-cancellation technology, it delivers an immersive listening experience, perfect for music, movies, and calls. Its ergonomic design ensures comfort during extended use, while the adjustable headband provides a secure fit. Equipped with high-performance drivers, the headphone produces rich bass and clear treble for a balanced sound profile. With a long-lasting battery, it supports wireless connectivity for hours of uninterrupted playback. The built-in microphone offers seamless call handling and voice assistant support. Stylish and durable, it's an ideal choice for both casual and professional use.",
+              //                 'images': [product['image']!],
+              //               },
+              //             ),
+              //           ),
+              //         );
+              //       },
+              //       child: _buildProductCard(
+              //         product['image']!,
+              //         product['title']!,
+              //         product['price']!,
+              //         product['rating']!,
+              //       ),
+              //     );
+              //   },
+              // ),
+
+              
             ),
           ],
         ),

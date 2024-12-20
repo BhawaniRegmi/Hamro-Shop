@@ -369,6 +369,8 @@ import 'package:robust_app/MyAccount/addProduct.dart';
 import 'package:robust_app/MyAccount/addedProductList.dart';
 import 'package:robust_app/MyAccount/myOrdersList.dart';
 import 'package:robust_app/MyAccount/settings.dart';
+import 'package:robust_app/Promotion/promoScreen.dart';
+import 'package:robust_app/Promotion/referralPage.dart';
 
 import 'myCart.dart';
 
@@ -529,6 +531,15 @@ class AccountScreen extends StatelessWidget {
                   Colors.red.shade100,
                   Colors.red,
                 ),
+                  _buildOptionTile(
+                  FontAwesomeIcons.code,
+                  'Referral',
+                  Colors.indigo.shade100,
+                  Colors.indigo,
+                  (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ReferralPage(),));
+                  }
+                ),
               ],
             ),
 
@@ -619,6 +630,15 @@ class AccountScreen extends StatelessWidget {
                   Colors.blue,
                   (){
                     Navigator.push(context, MaterialPageRoute(builder: (context) =>AddedProductList() ,));
+                  }
+                ),
+                   _buildOptionTile(
+                  FontAwesomeIcons.gift,
+                  'Promotion',
+                  Colors.indigo.shade100,
+                  Colors.indigo,
+                  (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) =>PromoScreen() ,));
                   }
                 ),
               ],

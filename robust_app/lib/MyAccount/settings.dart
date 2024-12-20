@@ -157,6 +157,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:robust_app/Address/shippingAddress.dart';
+import 'package:robust_app/MyAccount/inbox.dart';
 import 'package:robust_app/MyAccount/myInformation.dart';
 import 'package:robust_app/Screens/checkOutScreen.dart';
 import 'package:robust_app/main.dart';
@@ -282,10 +284,10 @@ class SettingsScreen extends StatelessWidget {
           }),
          
           _buildSettingsItem('Address Book', () {
-            print('Change Password clicked');
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AddShippingAddressScreen(),));
           }),
            _buildSettingsItemWithSubtitle('Messages', 'Recive exclusive offers and personal updates', () {
-            print('Change Email clicked');
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>InboxScreen() ,));
           }),
              _buildCountrySettingItem(() {
             // Handle the onTap event here
