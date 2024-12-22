@@ -7,6 +7,7 @@ import '../Blocs/CartBlocs/cartBloc.dart';
 import '../Blocs/CartBlocs/cartState.dart';
 import 'blocCartScreen.dart';
 import 'homeScreen.dart';
+import 'myAccountPage.dart';
 import 'myCart.dart';
 
 class MyWidget extends StatefulWidget {
@@ -334,15 +335,7 @@ class _MyWidgetState extends State<MyWidget> {
               ),
             ),
             actions: [
-              // IconButton(
-              //   icon: const Icon(Icons.shopping_cart, color: Colors.black),
-              //   onPressed: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(builder: (context) => MyCartPage()),
-              //     );
-              //   },
-              // ),
+        
               BlocBuilder<CartBloc, CartState>(
                 builder: (context, state) {
                   return Stack(
@@ -396,10 +389,18 @@ class _MyWidgetState extends State<MyWidget> {
               SizedBox(
                 width: 7,
               ),
-              const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/profile.jpg'),
-              ),
+               GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
               const SizedBox(width: 16),
             ],
             bottom: PreferredSize(

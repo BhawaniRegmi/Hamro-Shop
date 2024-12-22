@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:robust_app/MyAccount/addProduct.dart';
 
+import '../Screens/myAccountPage.dart';
 import '../Screens/myCart.dart';
 
 class AddedProductList extends StatelessWidget {
@@ -52,10 +53,18 @@ class AddedProductList extends StatelessWidget {
                   );
                 },
               ),
-              const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/profile.jpg'),
-              ),
+             GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
           
              // const SizedBox(width: 16),
             ],

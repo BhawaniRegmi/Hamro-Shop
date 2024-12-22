@@ -12,6 +12,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../Blocs/CartBlocs/cartBloc.dart';
 import '../Blocs/CartBlocs/cartState.dart';
 import 'blocCartScreen.dart';
+import 'myAccountPage.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -207,10 +208,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               SizedBox(
                 width: 7,
               ),
-              const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/profile.jpg'),
-              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
               const SizedBox(width: 16),
             ],
       ),
@@ -579,12 +588,18 @@ class _ProductDescriptionState extends State<ProductDescription> {
           ),
           SizedBox(height: 5),
           ListTile(
-            leading: CircleAvatar(
-              backgroundColor: Colors.blue,
-              backgroundImage:
-                  AssetImage('assets/profile.jpg'), // Path to your imagefdssf
-              radius: 25, // Optional: adjust size of the avatar
-            ),
+            leading:  GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
             title: Text("Jevon Raynor"),
             subtitle: Text("Great Product! I loved it."),
             trailing: Text("A day ago"),

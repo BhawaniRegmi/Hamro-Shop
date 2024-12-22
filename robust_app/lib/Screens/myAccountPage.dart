@@ -364,7 +364,9 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:robust_app/Filter/menuDrawer.dart';
 import 'package:robust_app/MyAccount/addProduct.dart';
 import 'package:robust_app/MyAccount/addedProductList.dart';
 import 'package:robust_app/MyAccount/myOrdersList.dart';
@@ -372,12 +374,16 @@ import 'package:robust_app/MyAccount/settings.dart';
 import 'package:robust_app/Promotion/promoScreen.dart';
 import 'package:robust_app/Promotion/referralPage.dart';
 
+import '../Blocs/CartBlocs/cartBloc.dart';
+import '../Blocs/CartBlocs/cartState.dart';
+import 'blocCartScreen.dart';
 import 'myCart.dart';
 
 class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MenuDrawer(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: Container(
@@ -394,9 +400,13 @@ class AccountScreen extends StatelessWidget {
           child: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            leading: IconButton(
-              icon: const Icon(Icons.menu, color: Colors.black),
-              onPressed: () {},
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu, color: Colors.black),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
             ),
             title: const Center(
               child: Text(
@@ -408,19 +418,60 @@ class AccountScreen extends StatelessWidget {
               ),
             ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.shopping_cart, color: Colors.black),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MyCartPage()),
+             BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return Stack(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyCartScreen(),
+                              // builder: (context) => MyCartPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      if (state.itemCount > 0)
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              // borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              '${state.itemCount}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
                   );
                 },
               ),
-              // const CircleAvatar(
-              //   radius: 20,
-              //   backgroundImage: AssetImage('assets/profile.jpg'),
-              // ),
+              SizedBox(
+                width: 7,
+              ),
+           
                   IconButton(
             icon: Icon(
               FontAwesomeIcons.gear,
@@ -448,8 +499,8 @@ class AccountScreen extends StatelessWidget {
             // User Info Section
             Row(
               children: [
-                CircleAvatar(
-                  radius: 24,
+                const CircleAvatar(
+                  radius: 20,
                   backgroundImage: AssetImage('assets/profile.jpg'),
                 ),
                 SizedBox(width: 12),

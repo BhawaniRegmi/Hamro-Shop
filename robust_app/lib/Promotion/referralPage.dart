@@ -7,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/services.dart'; // For Clipboard functionality
 import 'package:url_launcher/url_launcher.dart';
 
+import '../Screens/myAccountPage.dart';
 import '../Screens/myCart.dart'; // For launching URLs
 
 class ReferralPage extends StatelessWidget {
@@ -58,10 +59,18 @@ class ReferralPage extends StatelessWidget {
                   );
                 },
               ),
-              const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/profile.jpg'),
-              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
 
               // const SizedBox(width: 16),
             ],

@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+import '../Screens/myAccountPage.dart';
 import '../Screens/myCart.dart';
 
 class PromoScreen extends StatefulWidget {
@@ -168,10 +169,18 @@ void _showInvalidFormatSnackbar(String message) {
                   );
                 },
               ),
-              const CircleAvatar(
-                radius: 20,
-                backgroundImage: AssetImage('assets/profile.jpg'),
-              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
 
               // const SizedBox(width: 16),
             ],

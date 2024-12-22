@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:robust_app/MyAccount/inbox.dart';
 import 'package:robust_app/MyAccount/settings.dart';
+import 'package:robust_app/Screens/homeScreen.dart';
 import 'package:robust_app/Screens/myAccountPage.dart';
 
 import '../main.dart';
@@ -115,10 +116,18 @@ class MenuDrawer extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               child: Row(
                 children: [
-                  CircleAvatar(
-                    radius: 30, // Adjust the size of the profile picture
-                    backgroundImage: AssetImage('assets/profile.jpg'),
-                  ),
+                   GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
                   SizedBox(width: 16), // Space between image and text
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -148,6 +157,18 @@ class MenuDrawer extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: [
+                       ListTile(
+                    leading: Icon(Icons.home),
+                    title: Text('Home'),
+                    onTap: () {
+                     
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HomeScreen()),
+                      );
+                    },
+                  ),
                   ListTile(
                     leading: Icon(Icons.person),
                     title: Text('Profile'),

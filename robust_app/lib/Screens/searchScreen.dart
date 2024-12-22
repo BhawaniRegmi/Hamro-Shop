@@ -1163,8 +1163,14 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:robust_app/Screens/homeScreen.dart';
 import 'package:robust_app/Screens/productDetail.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../Blocs/CartBlocs/cartBloc.dart';
+import '../Blocs/CartBlocs/cartState.dart';
 import '../Filter/filter.dart';
+import 'blocCartScreen.dart';
+import 'myAccountPage.dart';
 import 'myCart.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -1222,373 +1228,253 @@ class _SearchScreenState extends State<SearchScreen> {
   final List<Map<String, String>> products = [
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '3'
-    },
-     {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '5'
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '3'
-    },
-     {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '5'
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '3'
-    },
-        {
-      'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 43,931',
-      'rating': '4'
-    },
-    {
-      'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
-      'price': 'Rs 81,104',
-      'rating': '3'
-    },
-    {
-      'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
-      'price': 'Rs 65,521',
-      'rating': '2'
-    },
-    {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '5'
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '3'
-    },
-     {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '5'
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
-      'price': 'Rs 54,069',
-      'rating': '3'
-    },
-     {
-      'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
-      'price': 'Rs 1,70,169',
-      'rating': '1'
-    },
-    {
-      'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
-      'price': 'Rs 66,235',
-      'rating': '5'
-    },
-    {
-      'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
     {
       'image': 'assets/product1.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 43,931',
       'rating': '4'
     },
     {
       'image': 'assets/product2.jpg',
-      'title': 'Samsung Galatero X6 Ultra LTE 4G/128GB',
+      'title': 'Samsung X6 LTE',
       'price': 'Rs 81,104',
       'rating': '3'
     },
     {
       'image': 'assets/product3.png',
-      'title': 'Shaork Robot Vacuum with Self-Empty Base',
+      'title': 'Robot Vacuum',
       'price': 'Rs 65,521',
       'rating': '2'
     },
     {
       'image': 'assets/product4.png',
-      'title': 'Toshibi 2-Door Inverter 1200L Refrigerator',
+      'title': '2-Door Refrigerator',
       'price': 'Rs 1,70,169',
       'rating': '1'
     },
     {
       'image': 'assets/product5.png',
-      'title': 'Air Purifier with True HEPA H14 Filter',
+      'title': 'Air Purifier',
       'price': 'Rs 66,235',
       'rating': '5'
     },
     {
       'image': 'assets/product6.png',
-      'title': 'Epson Mini Portable Projector Wireless',
+      'title': 'Portable Projector',
       'price': 'Rs 54,069',
       'rating': '3'
     },
@@ -1667,8 +1553,15 @@ class _SearchScreenState extends State<SearchScreen> {
                   backgroundColor: Colors.transparent,
                   elevation: 0,
                   leading: IconButton(
-                    icon: const Icon(Icons.menu, color: Colors.black),
-                    onPressed: () {},
+                    icon: const Icon(Icons.home, color: Colors.black),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
                   ),
                   title: const Center(
                     child: Text(
@@ -1680,20 +1573,71 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                   actions: [
-                    IconButton(
-                      icon:
-                          const Icon(Icons.shopping_cart, color: Colors.black),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MyCartPage()),
-                        );
-                      },
-                    ),
-                    const CircleAvatar(
-                      radius: 20,
-                      backgroundImage: AssetImage('assets/profile.jpg'),
-                    ),
+                   BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return Stack(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyCartScreen(),
+                              // builder: (context) => MyCartPage(),
+                            ),
+                          );
+                        },
+                      ),
+                      if (state.itemCount > 0)
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              // borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              '${state.itemCount}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                width: 7,
+              ),
+                     GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
                     const SizedBox(width: 16),
                   ],
                 ),

@@ -187,7 +187,7 @@
 //                       )
 //                     ],
 //                   )
-              
+
 //                 ],
 //               ),
 //             ),
@@ -198,12 +198,16 @@
 //   }
 // }
 
-
-
 import 'package:flutter/material.dart';
+import 'package:robust_app/Filter/menuDrawer.dart';
 import 'package:robust_app/Screens/addtoCart.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:robust_app/Screens/checkOutScreen.dart';
 
+import '../Blocs/CartBlocs/cartBloc.dart';
+import '../Blocs/CartBlocs/cartState.dart';
+import 'blocCartScreen.dart';
+import 'myAccountPage.dart';
 import 'myCart.dart';
 
 class WishListPage extends StatelessWidget {
@@ -236,7 +240,7 @@ class WishListPage extends StatelessWidget {
       'price': 'Rs 78,000',
       'date': '25 Nov 2024',
     },
-     {
+    {
       'image': 'assets/product6.png',
       'orderId': 'Abc-6555',
       'name': 'Coffee Machine',
@@ -269,56 +273,111 @@ class WishListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:    PreferredSize(
-                    preferredSize: const Size.fromHeight(60),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        border: Border(
-                          bottom: BorderSide(
-                            // color: Colors.black,
-                           color:  Colors.grey,
-                            width: 1,
-                          ),
+      drawer: MenuDrawer(),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              bottom: BorderSide(
+                // color: Colors.black,
+                color: Colors.grey,
+                width: 1,
+              ),
+            ),
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+           leading: Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.menu, color: Colors.black),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            ),
+            title: const Center(
+              child: Text(
+                'My Wishlist',
+                style: TextStyle(
+                  color: Color(0xFF1b447d),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            actions: [
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  return Stack(
+                    children: [
+                      IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          color: Colors.black,
+                          size: 35,
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyCartScreen(),
+                              // builder: (context) => MyCartPage(),
+                            ),
+                          );
+                        },
                       ),
-                      child: AppBar(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        leading: IconButton(
-                          icon: const Icon(Icons.menu, color: Colors.black),
-                          onPressed: () {},
-                        ),
-                        title: const Center(
-                          child: Text(
-                            'My Wishlist',
-                            style: TextStyle(
-                              color: Color(0xFF1b447d),
-                              fontWeight: FontWeight.bold,
+                      if (state.itemCount > 0)
+                        Positioned(
+                          right: 8,
+                          top: 8,
+                          child: Container(
+                            padding: EdgeInsets.all(4),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              // borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(7),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 16,
+                              minHeight: 16,
+                            ),
+                            child: Text(
+                              '${state.itemCount}',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
-                        actions: [
-                          IconButton(
-                            icon: const Icon(Icons.shopping_cart,
-                                color: Colors.black),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyCartPage()),
-                              );
-                            },
-                          ),
-                          const CircleAvatar(
-                            radius: 20,
-                            backgroundImage: AssetImage('assets/profile.jpg'),
-                          ),
-                          const SizedBox(width: 16),
-                        ],
-                      ),
-                    ),
-                  ),
+                    ],
+                  );
+                },
+              ),
+              SizedBox(
+                width: 7,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AccountScreen()),
+                  );
+                },
+                child: const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/profile.jpg'),
+                ),
+                ),
+              const SizedBox(width: 16),
+            ],
+          ),
+        ),
+      ),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -337,9 +396,12 @@ class WishListPage extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(6),
-                    child: Column(mainAxisAlignment: MainAxisAlignment.start,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Image.asset(
                           item['image'],
                           height: 60,
@@ -424,10 +486,14 @@ class WishListPage extends StatelessWidget {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                            showDialog(
-                          context: context,
-                          builder: (context) => ProductDetailsDialog(name:"samsung" ,imagePatho:"",price: "", ),
-                        );
+                          showDialog(
+                            context: context,
+                            builder: (context) => ProductDetailsDialog(
+                              name: "samsung",
+                              imagePatho: "",
+                              price: "",
+                            ),
+                          );
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF1b447d),
@@ -443,7 +509,11 @@ class WishListPage extends StatelessWidget {
                       const SizedBox(height: 4),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => CheckoutPage(),));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CheckoutPage(),
+                              ));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red,
